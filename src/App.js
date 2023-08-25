@@ -1,9 +1,12 @@
 
 import './App.css';
+import WeatherCard from './components/WeatherCard';
 
 function App() {
   return (
-    <h2>Hello World</h2>
+    <> 
+    <WeatherCard/>
+    </>
   );
 }
 

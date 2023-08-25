@@ -1,0 +1,74 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+p{
+    font-size: 1.2rem;
+}
+h1{
+    font-size: 6rem;
+}
+.container{
+    max-width: 700px;
+    height: 760px;
+    margin: auto;
+    padding: 0.2rem 1rem;
+    position: relative;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.app{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    /* background-color: grey; */
+    color: white;
+
+}
+.app:before{
+    content: "";
+    background: url('../src/asset/asset1.jpg') no-repeat center center/cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+
+}
+/* Navbar */
+.top .description{
+    padding-top: 3rem;
+    position: relative;
+    width: 100%;
+    right:-95%;
+    transform-origin: 0 0;
+    transform: rotate(269deg);
+}
+
+.top input{
+    width: 50%;
+    height: 40px;
+    position: relative;
+    background-color: rgb(206, 198, 198);
+    border-radius: 20% 20%;
+    margin-bottom: 5%;
+}
+.my-2{
+    margin-top: 1.2rem;
+    margin-bottom: 0.7rem;
+}
+.bottom{
+    display: flex;
+    flex-direction: row;
+    color: black;
+    justify-content: space-around;
+    border: 2px solid white;
+    margin: 1.5rem;
+    padding: 2rem;
+    background-color: gainsboro;
+}
