@@ -11,8 +11,6 @@ const SearchBar = (props) => {
   // Handling Search Button
   const handleSearch=()=>{
     setsearch(input);
-
-
   }
   
 
