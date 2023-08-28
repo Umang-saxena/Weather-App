@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
 import './SearchBar.css'; // Import your CSS for styling
 
-const SearchBar = ({ onSearch }) => {
-  const [query, setQuery] = useState('');
+const SearchBar = (props) => {
+  // props Destructuring
+  const {setsearch} = props;
 
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
+  // States Used
+  const [input, setInput] = useState("");
 
-  const handleSearch = () => {
-    onSearch(query);
-  };
+  // Handling Search Button
+  const handleSearch=()=>{
+    setsearch(input);
+
+
+  }
+  
+
+
   return (
     <div className="search-bar-container">
       <input
         type="text"
         className="search-input"
         placeholder="Search..."
-        value={query}
-        onChange={handleInputChange}
+        value={ input }
+        onChange={(e)=>{setInput(e.target.value)}}
       />
-      <button className="search-button" onClick={handleSearch}>
+      <button className="search-button" onClick={handleSearch} >
         Search
       </button>
     </div>
