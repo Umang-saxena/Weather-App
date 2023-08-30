@@ -7,13 +7,17 @@ body{
     overflow-y:hidden ;
 }
 p{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 h1{
     font-size: 6rem;
 }
 h3{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+}
+.d-flex{
+    display: flex;
+    flex-direction: row;
 }
 .container{
     max-width: 700px;
@@ -78,4 +82,11 @@ h3{
     margin: 1.5rem;
     padding: 2rem;
     background-color: gainsboro;
+}
+.temperature img{
+    width:9vw;
+    height:8vw;
+}
+.temperature{
+    justify-content: space-between;
 }

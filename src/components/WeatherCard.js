@@ -16,6 +16,8 @@ const WeatherCard = (props) => {
     const [weather, setWeather] = useState("");
     const [search, setSearch] = useState("bengaluru");
     const [desc, setDesc] = useState("");
+    const [iconcode, setIconcode] = useState("");
+
 
     const capitaliseFirst=(str)=>{
 
@@ -44,7 +46,7 @@ const WeatherCard = (props) => {
 
             try {
                 let response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=metric`);
-                console.log(response.data.weather[0].main);
+                console.log(response);
                 setCity(response.data.name);
                 setTemp(response.data.main.temp);
                 setFeel(response.data.main.feels_like);
@@ -52,6 +54,7 @@ const WeatherCard = (props) => {
                 setWind(response.data.wind.speed);
                 setWeather(response.data.weather[0].main);
                 setDesc(response.data.weather[0].description);
+                setIconcode(response.data.weather[0].icon);
 
             } catch (error) {
                 console.log(error);
@@ -70,9 +73,12 @@ const WeatherCard = (props) => {
                     <div className="location ">
                         <p >{city} </p>
                     </div>
-                    <div className="temperature">
+                    <div className="temperature d-flex">
                         <h1>{temp}&deg;C</h1>
-                        <p>{capitaliseFirst(desc)}</p>
+                        <img src={`https://openweathermap.org/img/wn/${iconcode}@2x.png`} alt="" /> 
+                    </div>
+                    <div>
+                    <p>{capitaliseFirst(desc)}</p>
                     </div>
                     <div className="description">
                         <p>{weather}</p>
