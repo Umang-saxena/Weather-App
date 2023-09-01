@@ -45,7 +45,7 @@ const WeatherCard = (props) => {
         const fetchData = async () => {
 
             try {
-                let response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=metric`);
+                let response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=27d48ec8f418dc621fc340908fedabe3&units=metric`);
                 console.log(response);
                 setCity(response.data.name);
                 setTemp(response.data.main.temp);
