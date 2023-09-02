@@ -46,7 +46,7 @@ const WeatherCard = (props) => {
 
             try {
                 let response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=metric`);
-                console.log(response);
+                // console.log(response);
                 setCity(response.data.name);
                 setTemp(response.data.main.temp);
                 setFeel(response.data.main.feels_like);
@@ -57,15 +57,18 @@ const WeatherCard = (props) => {
                 setIconcode(response.data.weather[0].icon);
 
             } catch (error) {
-                console.log(error);
+                alert("Incorrect Input");
+                
             }
         }
         fetchData();
     }, [apiKey, search])
 
 
+
     return (
         <div className='app '>
+
             <SearchBar search={search} setsearch={setSearch} />
             <div className="container d-flex">
                 <div className="top">
