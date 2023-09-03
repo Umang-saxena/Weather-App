@@ -1,28 +1,26 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import WeatherContext from "./weatherContext"
+import axios from 'axios';
 
 const WeatherState = (props) => {
+  const {apiKey}=props;
 
-  const fetchData = async (props) => {
+  const forecastFetch = async () => {
     try {
-        let response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=metric`);
-        // console.log(response);
-        props.setCity(response.data.name);
-        setTemp(response.data.main.temp);
-        setFeel(response.data.main.feels_like);
-        setHumidity(response.data.main.humidity);
-        setWind(response.data.wind.speed);
-        setWeather(response.data.weather[0].main);
-        setDesc(response.data.weather[0].description);
-        setIconcode(response.data.weather[0].icon);
+        let response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=delhi&appid=${apiKey}&units=metric`);
+        console.log(response.data.weather);
 
     } catch (error) {
-        alert("Incorrect Input");
+        console.log(error);
         
     }}
-
+    useEffect(() => {
+      //eslint-disable-next-line 
+      forecastFetch();
+    }, [])
+    
   return (
-    <WeatherContext.Provider value={{fetchData}}>
+    <WeatherContext.Provider value={{forecastFetch}}>
       {props.children}
     </WeatherContext.Provider>
   )

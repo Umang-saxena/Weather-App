@@ -8,6 +8,7 @@ import Forecast from './Forecast';
 const WeatherCard = (props) => {
     // Destructuring props
     let { apiKey } = props;
+    
     // States Used
     const [city, setCity] = useState("bengaluru");
     const [temp, setTemp] = useState("");

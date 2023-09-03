@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /sampleresponse.txt
+/UpdateLog.txt
 
 # testing
 /coverage
