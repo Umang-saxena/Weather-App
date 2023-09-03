@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../weather.css';
 import SearchBar from './SearchBar';
 import axios from 'axios';
+import Forecast from './Forecast';
 
 
 const WeatherCard = (props) => {
@@ -87,6 +88,7 @@ const WeatherCard = (props) => {
                         <p>{weather}</p>
                     </div>
                 </div>
+                <Forecast/>
                 <div className="bottom">
                     <div className="feels">
                         <h3>Feels Like</h3>
