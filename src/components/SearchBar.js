@@ -6,7 +6,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 
 const SearchBar = (props) => {
   // props Destructuring
-  const { setsearch } = props;
+  const { setsearch,data } = props;
 
   // States Used
   const [input, setInput] = useState("");
@@ -19,7 +19,7 @@ const SearchBar = (props) => {
 
   // Handling Search Button
   const handleSearch = () => {
-    setsearch(input);
+    setsearch({...data,search:input});
   }
 
   const handleClick = () => {

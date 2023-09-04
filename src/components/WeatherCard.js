@@ -32,26 +32,26 @@ const WeatherCard = (props) => {
     // const [iconcode, setIconcode] = useState("");
 
 
-    // const capitaliseFirst=(str)=>{
+    const capitaliseFirst=(str)=>{
 
-    //     //split the above string into an array of strings 
-    //     //whenever a blank space is encountered
+        //split the above string into an array of strings 
+        //whenever a blank space is encountered
 
-    //     const arr = str.split(" ");
+        const arr = str.split(" ");
 
-    //     //loop through each element of the array and capitalize the first letter.
+        //loop through each element of the array and capitalize the first letter.
 
 
-    //     for (var i = 0; i < arr.length; i++) {
-    //         arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        for (var i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
 
-    //     }
+        }
 
-    //     //Join all the elements of the array back into a string 
-    //     //using a blankspace as a separator 
-    //     const str2 = arr.join(" ");
-    //     return str2
-    // }
+        //Join all the elements of the array back into a string 
+        //using a blankspace as a separator 
+        const str2 = arr.join(" ");
+        return str2
+    }
 
     //   Use Effect Hook
     useEffect(() => {
@@ -60,6 +60,7 @@ const WeatherCard = (props) => {
                 let response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${data.search}&appid=${apiKey}&units=metric`);
                 // console.log(response);
                 setData({city:response.data.name
+                ,search:response.data.name
                 ,temp:response.data.main.temp
                 ,feel:response.data.main.feels_like
                 ,humidity:response.data.main.humidity
@@ -67,23 +68,22 @@ const WeatherCard = (props) => {
                 ,weather:response.data.weather[0].main
                 ,desc:response.data.weather[0].description
                 ,iconcode:response.data.weather[0].icon});
-
+                console.log(response.data);
             } catch (error) {
-                console.log(error);
-                console.log(data);
+                alert("Incorect Input");
 
                 
             }
         }
         fetchData();
-    }, [apiKey,data])
+    }, [data.search,apiKey])
 
 
 
     return (
         <div className='app '>
 
-            <SearchBar search={data.search} setsearch={setData} />
+            <SearchBar search={data.search} data={data} setsearch={setData} />
             <div className="container d-flex">
                 <div className="top">
                     {/* <input type="search" name="city" id="citySearch" /> */}
@@ -95,13 +95,13 @@ const WeatherCard = (props) => {
                         <img src={`https://openweathermap.org/img/wn/${data.iconcode}@2x.png`} alt="" /> 
                     </div>
                     <div>
-                    <p>{data.desc}</p>
+                    <p> {capitaliseFirst(data.desc)}</p>
                     </div>
                     <div className="description">
-                        <p>{data.weather}</p>
+                        <p> {data.weather}</p>
                     </div>
                 </div>
-                <Forecast/>
+                {/* <Forecast/> */}
                 <div className="bottom">
                     <div className="feels">
                         <h3>Feels Like</h3>
