@@ -1,35 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import '../weather.css';
 import SearchBar from './SearchBar';
-import axios from 'axios';
+
 import Forecast from './Forecast';
+import myContext from '../context/myContext';
 
 
 const WeatherCard = (props) => {
     // Destructuring props
-    let { apiKey } = props;
+
+    const context=useContext(myContext);
     
-    // States Used
-    const [data, setData] = useState({
-        city: 'bengaluru',
-        temp: "",
-        feel: "",
-        humidity: "",
-        wind: "",
-        weather: "",
-        search: "bengaluru",
-        desc: "",
-        iconcode: "",
-    })
-    // const [city, setCity] = useState("bengaluru");
-    // const [temp, setTemp] = useState("");
-    // const [feel, setFeel] = useState("");
-    // const [humidity, setHumidity] = useState("");
-    // const [wind, setWind] = useState("");
-    // const [weather, setWeather] = useState("");
-    // const [search, setSearch] = useState("bengaluru");
-    // const [desc, setDesc] = useState("");
-    // const [iconcode, setIconcode] = useState("");
+    const { data,fetchData,setData }=context;
+    
 
 
     const capitaliseFirst=(str)=>{
@@ -55,28 +38,9 @@ const WeatherCard = (props) => {
 
     //   Use Effect Hook
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                let response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${data.search}&appid=${apiKey}&units=metric`);
-                // console.log(response);
-                setData({city:response.data.name
-                ,search:response.data.name
-                ,temp:response.data.main.temp
-                ,feel:response.data.main.feels_like
-                ,humidity:response.data.main.humidity
-                ,wind:response.data.wind.speed
-                ,weather:response.data.weather[0].main
-                ,desc:response.data.weather[0].description
-                ,iconcode:response.data.weather[0].icon});
-                console.log(response.data);
-            } catch (error) {
-                alert("Incorect Input");
-
-                
-            }
-        }
         fetchData();
-    }, [data.search,apiKey])
+        // eslint-disable-next-line
+    }, [data.search])
 
 
 

@@ -1,6 +1,7 @@
 
 import './App.css';
 import WeatherCard from './components/WeatherCard';
+import MyStates from './context/MyStates';
 
 
 function App() {
@@ -9,7 +10,9 @@ function App() {
 
   return (
     <>
+    <MyStates apiKey= { apikey }>
     <WeatherCard apiKey={apikey} />
+    </MyStates>
     </>
   );
 }
