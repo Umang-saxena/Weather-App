@@ -1,10 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React  from "react";
 import "./Forecast.css";
-import weatherContext from "../context/weatherContext";
 
 const Forecast = () => {
-    // eslint-disable-next-line
-    const context=useContext(weatherContext);
     
 
   return (

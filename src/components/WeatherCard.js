@@ -101,7 +101,7 @@ const WeatherCard = (props) => {
                         <p> {data.weather}</p>
                     </div>
                 </div>
-                {/* <Forecast/> */}
+                <Forecast/>
                 <div className="bottom">
                     <div className="feels">
                         <h3>Feels Like</h3>
