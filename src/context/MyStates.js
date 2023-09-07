@@ -1,9 +1,14 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import axios from 'axios';
 import MyContext from "./myContext";
 
 const MyStates = (props) => {
   let { apiKey } = props;
+  // eslint-disable-next-line
+  const [currentLocation, setCurrentLocation] = useState({
+    lat:"",
+    long:""
+  })
 
   const [data, setData] = useState({
     city: 'bengaluru',
@@ -30,13 +35,34 @@ const fetchData = async () => {
       ,weather:response.data.weather[0].main
       ,desc:response.data.weather[0].description
       ,iconcode:response.data.weather[0].icon});
-      console.log(response.data);
+      // console.log(response.data);
   } catch (error) {
       alert("Incorrect Input");
 
-      
   }
 }
+
+const geoLocation=()=>{
+    navigator.geolocation.getCurrentPosition((position)=>{
+      const newCoords={
+        lat:position.coords.latitude,
+        long:position.coords.longitude
+      }
+      setCurrentLocation(newCoords);
+    })  
+  }
+  useEffect(() => {
+    geoLocation();
+  
+    // eslint-disable-next-line
+  }, [])
+
+  // Different useffect hook is used to tackle the asynchronous behaviour of setstate function of usestate....
+  // Without using that we are getting empty state object even after updating it
+  useEffect(() => {
+  console.log(currentLocation)
+}, [currentLocation])
+
 
   return (
     <MyContext.Provider value={{data,fetchData,setData}} >
