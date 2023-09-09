@@ -1,8 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import '../weather.css';
 import SearchBar from './SearchBar';
-
-import Forecast from './Forecast';
 import myContext from '../context/myContext';
 
 
@@ -46,7 +44,6 @@ const WeatherCard = (props) => {
 
     return (
         <div className='app '>
-
             <SearchBar search={data.search} data={data} setsearch={setData} />
             <div className="container d-flex">
                 <div className="top">
@@ -58,14 +55,14 @@ const WeatherCard = (props) => {
                         <h1>{data.temp}&deg;C</h1>
                         <img src={`https://openweathermap.org/img/wn/${data.iconcode}@2x.png`} alt="" /> 
                     </div>
-                    <div>
+                    <div className="data d-">
                     <p> {capitaliseFirst(data.desc)}</p>
                     </div>
                     <div className="description">
                         <p> {data.weather}</p>
                     </div>
                 </div>
-                <Forecast/>
+                {/* <Forecast/> */}
                 <div className="bottom">
                     <div className="feels">
                         <h3>Feels Like</h3>
